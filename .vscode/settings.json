@@ -1,9 +1,0 @@
-{
-    "files.associations": {
-        "stdio.h": "c",
-        "random": "cpp",
-        "iostream": "cpp",
-        "algorithm": "cpp",
-        "iosfwd": "cpp"
-    }
-}

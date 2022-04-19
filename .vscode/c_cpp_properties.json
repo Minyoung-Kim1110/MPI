@@ -1,22 +1,15 @@
 {
     "configurations": [
         {
-            "name": "Win32",
+            "name": "mpicc Linux",
             "includePath": [
-                "${workspaceFolder}/**",
-                "C:/Program Files (x86)/Microsoft SDKs/MPI/Include/**"
-                
+                "${workspaceFolder}/**"
             ],
-            "defines": [
-                "_DEBUG",
-                "UNICODE",
-                "_UNICODE"
-            ],
-            "windowsSdkVersion": "10.0.19041.0",
-            "compilerPath": "C:/MinGW/bin/gcc.exe",
-            "cStandard": "c17",
-            "cppStandard": "c++17",
-            "intelliSenseMode": "windows-gcc-x64"
+            "defines": [],
+            "compilerPath": "/usr/bin/mpicc",
+            "cStandard": "gnu11",
+            "cppStandard": "gnu++14",
+            "intelliSenseMode": "linux-gcc-x64"
         }
     ],
     "version": 4
