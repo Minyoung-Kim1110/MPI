@@ -19,7 +19,7 @@ int main(int argc, char *argv[]){
     // 전체 프로세스 개수 
     MPI_Comm_size(MPI_COMM_WORLD, &size);
     
-    
+    ////
 
     MPI_Finalize();
 }
