@@ -12,11 +12,9 @@ compile:mpicc -g ${file} -o ${fileDirname}/${fileBasenameNoExtension}.exe
 
 //개인 함수 만들기 
 void my_function(int *in, int *out, int *len, MPI_Datatype *dt){
-    *out = 0 ; 
     for (int i=0; i<*len; i++){
-        *out+= in[i]+1;
+        out[i]+= in[i];
     }
-    printf("%d\n", *out);
 }
 
 int main(int argc, char *argv[]){
@@ -30,9 +28,22 @@ int main(int argc, char *argv[]){
     int rank, num_processor;
     MPI_Comm_rank(MPI_COMM_WORLD, &rank);
     MPI_Comm_size(MPI_COMM_WORLD, &num_processor);
+    int input[num_processor];
 
-    int out[num_processor];
-    MPI_Reduce(&rank, &out, 1,  MPI_INT, myop, 0, MPI_COMM_WORLD);
+    if(rank == 0){
+        // At root, input={100,100,...}
+        for(int i =0; i< num_processor; i++){
+            input[i]=100;
+        }
+    }
+    else{
+        for(int i =0; i< num_processor; i++){
+            input[i]=0;
+        }input[rank]+=1;
+    }
+    int out[100];
+    // output array is initialized with input array in root  
+    MPI_Reduce(&input, &out, num_processor,  MPI_INT, myop, 0, MPI_COMM_WORLD);
     if (rank == 0){
         for (int i=0; i<num_processor; i++){
             fprintf(stdout, "output value %d\n", out[i]);
@@ -40,9 +51,6 @@ int main(int argc, char *argv[]){
         }
 
     }
-    
-
-
     MPI_Finalize();
 }
         
