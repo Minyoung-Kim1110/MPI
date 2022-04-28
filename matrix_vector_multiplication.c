@@ -2,10 +2,9 @@
 Minyoung Kim (Apr. 27, 2022)
 2022 Spring PSC class 
 Subject: MPI
-MPI softward: msmpi // msmpi use gcc to compile mpi code 
+MPI software: mpich  
 compile:mpicc -g ${file} -o ${fileDirname}/${fileBasenameNoExtension}.exe
 */
-
 #include <stdio.h>
 #include <mpi.h>
 #include <stdlib.h>
