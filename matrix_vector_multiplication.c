@@ -106,10 +106,9 @@ int main(int argc, char *argv[]){
             // 다 계산했으면 break!
             else po=0;
         }
+        free(buffer);
     }
-    free(buffer);
+    
     MPI_Finalize();
 
 }
-
-// why warning message? 
