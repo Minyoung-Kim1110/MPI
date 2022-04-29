@@ -27,7 +27,7 @@ int main(int argc, char *argv[]){
 
         //Initialize matrix 
         numrow = numprocs-1; 
-        numcol = 10 ; 
+        numcol = 7 ; 
         MPI_Bcast(&numrow, 1, MPI_INT, 0, MPI_COMM_WORLD);
         MPI_Bcast(&numcol, 1, MPI_INT, 0, MPI_COMM_WORLD);
         for (int i=0; i< numrow; i++){
@@ -37,19 +37,7 @@ int main(int argc, char *argv[]){
                 x[j]=1;
             }
         }
-        // //print matrix 
-        // for(int i=0; i< numrow; i++){
-        //     printf("A[%d]= ",i);
-        //     for(int j=0; j<numcol; j++){
-        //         printf("%f ", A[i][j]);
-        //     }
-        //     printf("\n");
-
-        // }
-        // for(int i=0; i<numcol; i++){
-        //     printf("X[%d]= %f\n", i,  x[i]);
-        // }
-
+        
         int numsent = 0; 
         // 모든 프로세스에 x 전달 
         MPI_Bcast(&x[0], numcol, MPI_DOUBLE, 0, MPI_COMM_WORLD);
